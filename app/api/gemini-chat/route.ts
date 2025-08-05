@@ -2,6 +2,91 @@ import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
   try {
+<<<<<<< HEAD
+    const { message, chatMode, supportType, language, conversationHistory } = await request.json()
+
+    // Enhanced context based on support type and user mode
+    const getSystemPrompt = () => {
+      const basePrompt = `You are a professional AI assistant for WorkGuardian, a workplace incident management platform. You provide compassionate, expert-level support for workplace harassment, discrimination, and safety concerns.`
+
+      const modeContext =
+        chatMode === "verified"
+          ? "The user has a verified account with full access to platform features. You can reference their case history and provide personalized guidance."
+          : "The user is in anonymous mode for privacy. Provide general support while respecting their anonymity."
+
+      const supportContext = {
+        general: "Provide general workplace guidance and support. Focus on immediate safety and next steps.",
+        legal:
+          "Focus on legal aspects of workplace incidents. Provide information about rights, procedures, and when to seek legal counsel. Always recommend consulting with a qualified attorney for specific legal advice.",
+        crisis:
+          "This is a crisis situation. Prioritize immediate safety, de-escalation, and connecting with emergency resources. Be calm, supportive, and directive.",
+        counseling:
+          "Provide emotional support and counseling guidance. Focus on validation, coping strategies, and mental health resources.",
+      }
+
+      return `${basePrompt}\n\n${modeContext}\n\n${supportContext[supportType as keyof typeof supportContext]}\n\nAlways be empathetic, professional, and focused on the user's safety and well-being. If the situation requires immediate intervention, recommend emergency services.`
+    }
+
+    // Simulate AI response based on context
+    const generateResponse = (userMessage: string) => {
+      const lowerMessage = userMessage.toLowerCase()
+
+      // Crisis detection
+      if (
+        lowerMessage.includes("emergency") ||
+        lowerMessage.includes("danger") ||
+        lowerMessage.includes("threat") ||
+        lowerMessage.includes("hurt")
+      ) {
+        return "I'm very concerned about your safety. If you're in immediate danger, please call emergency services (100) right away. If you're safe to continue, I'm here to help you create a safety plan and connect you with appropriate resources. Can you tell me more about your current situation?"
+      }
+
+      // Legal consultation
+      if (supportType === "legal") {
+        return "I understand you're seeking legal guidance regarding a workplace incident. Based on Indian labor laws and the PoSH Act 2013, you have specific rights and protections. I can help you understand the complaint process, documentation requirements, and your legal options. However, for specific legal advice, I recommend consulting with a qualified employment attorney. What specific legal questions do you have?"
+      }
+
+      // Crisis support
+      if (supportType === "crisis") {
+        return "I'm here to support you through this crisis. Your safety and well-being are the top priority. Let's work together to assess your immediate situation and create a plan to keep you safe. Can you tell me about your current environment and any immediate concerns you have?"
+      }
+
+      // Counseling support
+      if (supportType === "counseling") {
+        return "Thank you for reaching out. It takes courage to seek support, and I want you to know that your feelings and experiences are valid. I'm here to listen and provide guidance. Many people who experience workplace incidents feel overwhelmed, confused, or isolated - these are normal responses to abnormal situations. How are you feeling right now, and what kind of support would be most helpful?"
+      }
+
+      // General workplace guidance
+      if (lowerMessage.includes("harassment") || lowerMessage.includes("discrimination")) {
+        return "I'm sorry you're experiencing workplace harassment or discrimination. This is a serious matter, and you deserve a safe work environment. Under the Prevention of Sexual Harassment (PoSH) Act 2013 and other labor laws, you have rights and protections. I can help you understand your options, including filing a complaint with your Internal Complaints Committee (ICC), documenting incidents, and accessing support resources. What specific situation are you dealing with?"
+      }
+
+      // Default supportive response
+      return "I'm here to help and support you. Whether you're dealing with workplace harassment, discrimination, safety concerns, or need emotional support, I'm equipped to provide guidance and connect you with appropriate resources. Please feel free to share what's on your mind - everything you tell me is confidential and I'm here to listen without judgment."
+    }
+
+    const response = generateResponse(message)
+
+    return NextResponse.json({
+      response,
+      supportType,
+      chatMode,
+      timestamp: new Date().toISOString(),
+    })
+  } catch (error) {
+    console.error("Error in Gemini chat API:", error)
+    return NextResponse.json(
+      {
+        error:
+          "I apologize, but I'm experiencing technical difficulties. If this is an emergency, please contact emergency services immediately at 100.",
+        response:
+          "I'm sorry, I'm having trouble responding right now. Please try again, or if this is urgent, contact emergency services or call the women's helpline at 181.",
+      },
+      { status: 500 },
+    )
+  }
+}
+=======
     const { message, chatMode, userMode, language, conversationHistory } = await request.json()
 
     // In a real implementation, you would use the actual Gemini API
@@ -86,3 +171,4 @@ function generateContextualResponse(
 
   return generalResponses[Math.floor(Math.random() * generalResponses.length)]
 }
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301

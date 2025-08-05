@@ -19,13 +19,19 @@ import {
   Lightbulb,
   Briefcase,
   Award,
+<<<<<<< HEAD
+=======
   TrendingUp,
   Clock,
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
   User,
   UserCheck,
   LogOut,
   Database,
+<<<<<<< HEAD
+=======
   BarChart3,
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
   MessageCircle,
   Network,
   Zap,
@@ -72,8 +78,13 @@ export default function HomePage() {
     en: "English",
     hi: "हिंदी",
     bn: "বাংলা",
+<<<<<<< HEAD
+    ta: "தமிழ்",
+    te: "తెలుগు",
+=======
     ta: "தமিழ்",
     te: "తెলুগু",
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
     mr: "मराठी",
     gu: "ગુજરાતી",
     kn: "ಕನ್ನಡ",
@@ -92,6 +103,8 @@ export default function HomePage() {
       available: true,
     },
     {
+<<<<<<< HEAD
+=======
       title: "Timeline Manager",
       description: "Chronological incident tracking and timeline visualization",
       icon: Clock,
@@ -101,6 +114,7 @@ export default function HomePage() {
       available: userMode === "verified",
     },
     {
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
       title: "Knowledge Base",
       description: "Comprehensive legal resources and procedural guidance",
       icon: BookOpen,
@@ -128,6 +142,8 @@ export default function HomePage() {
       available: userMode === "verified",
     },
     {
+<<<<<<< HEAD
+=======
       title: "Analytics Suite",
       description: "Advanced reporting and trend analysis tools",
       icon: TrendingUp,
@@ -137,6 +153,7 @@ export default function HomePage() {
       available: userMode === "verified",
     },
     {
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
       title: "Expert Support",
       description: "24/7 professional consultation and crisis intervention",
       icon: Headphones,
@@ -321,7 +338,11 @@ export default function HomePage() {
             <p className="text-xl text-gray-600">All tools and features at your fingertips</p>
           </div>
 
+<<<<<<< HEAD
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+=======
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
             {mainFeatures.map((feature, index) => (
               <Card
                 key={index}
@@ -380,31 +401,41 @@ export default function HomePage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
+<<<<<<< HEAD
+              <div className="grid grid-cols-4 gap-6">
+=======
               <div className="grid grid-cols-6 gap-6">
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
                 <Link href="/incident-logger">
                   <Button className="bg-gray-700 hover:bg-gray-600 text-white p-8 rounded-2xl flex-col space-y-3 h-auto w-full">
                     <FileText className="h-10 w-10" />
                     <span className="text-sm font-medium">New Case</span>
                   </Button>
                 </Link>
+<<<<<<< HEAD
+=======
                 <Link href={userMode === "verified" ? "/timeline" : "/login"}>
                   <Button className="bg-gray-700 hover:bg-gray-600 text-white p-8 rounded-2xl flex-col space-y-3 h-auto w-full">
                     <Clock className="h-10 w-10" />
                     <span className="text-sm font-medium">Timeline</span>
                   </Button>
                 </Link>
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
                 <Link href={userMode === "verified" ? "/evidence-vault" : "/login"}>
                   <Button className="bg-gray-700 hover:bg-gray-600 text-white p-8 rounded-2xl flex-col space-y-3 h-auto w-full">
                     <Database className="h-10 w-10" />
                     <span className="text-sm font-medium">Evidence</span>
                   </Button>
                 </Link>
+<<<<<<< HEAD
+=======
                 <Link href={userMode === "verified" ? "/analytics" : "/login"}>
                   <Button className="bg-gray-700 hover:bg-gray-600 text-white p-8 rounded-2xl flex-col space-y-3 h-auto w-full">
                     <BarChart3 className="h-10 w-10" />
                     <span className="text-sm font-medium">Analytics</span>
                   </Button>
                 </Link>
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
                 <Link href="/sos-chat">
                   <Button className="bg-gray-700 hover:bg-gray-600 text-white p-8 rounded-2xl flex-col space-y-3 h-auto w-full">
                     <MessageCircle className="h-10 w-10" />
@@ -555,8 +586,13 @@ export default function HomePage() {
                   </Link>
                 </li>
                 <li>
+<<<<<<< HEAD
+                  <Link href="/resources" className="hover:text-white transition-colors">
+                    Knowledge Base
+=======
                   <Link href="/analytics" className="hover:text-white transition-colors">
                     Analytics Suite
+>>>>>>> d96e8db515a7187fd72d8f0394b36dfc54714301
                   </Link>
                 </li>
               </ul>
